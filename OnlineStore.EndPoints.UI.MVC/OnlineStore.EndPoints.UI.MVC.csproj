@@ -4,4 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Core.Contracts\OnlineStore.Core.Contracts.csproj" />
+    <ProjectReference Include="..\OnlineStore.Core.Domain\OnlineStore.Core.Domain.csproj" />
+    <ProjectReference Include="..\OnlineStore.Infrastructure.DAL.EF\OnlineStore.Infrastructure.DAL.EF.csproj" />
+    <ProjectReference Include="..\OnlineStore.Services.ApplicationServices\OnlineStore.Services.ApplicationServices.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,31 @@
+﻿@model List<Product>
+<table>
+    <tr>
+        <th>Product ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ProductId
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Category.CategoryName
+            </td>
+            <td>
+                <img src="@item.Image" />
+            </td>
+            <td>
+                @item.Price.ToString("c")
+            </td>
+        </tr>
+    }
+
+</table>
