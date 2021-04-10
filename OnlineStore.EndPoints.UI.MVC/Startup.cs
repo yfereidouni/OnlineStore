@@ -56,7 +56,7 @@ namespace OnlineStore.EndPoints.UI.MVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=product}/{action=list}/{id?}");
             });
         }
     }

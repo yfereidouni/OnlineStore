@@ -10,6 +10,5 @@ namespace OnlineStore.Core.Domain.Categories
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-
     }
 }
