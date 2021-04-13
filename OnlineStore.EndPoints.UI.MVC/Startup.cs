@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineStore.Core.Contracts.Products;
+using OnlineStore.Infrastructure.DAL.EF.Common;
 using OnlineStore.Infrastructure.DAL.EF.Products;
 using System;
 using System.Collections.Generic;
@@ -27,7 +29,10 @@ namespace OnlineStore.EndPoints.UI.MVC
         {
             services.AddControllersWithViews();
 
-            services.AddScoped<IProductRepository, FakeProductRepository>();
+            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore")));
+
+            //services.AddScoped<IProductRepository, FakeProductRepository>();
+            services.AddScoped<IProductRepository, EFProductRepository>();
 
         }
 

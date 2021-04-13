@@ -3,7 +3,6 @@ using OnlineStore.Core.Domain.Categories;
 using OnlineStore.Core.Domain.Products;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
