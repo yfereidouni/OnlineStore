@@ -3,6 +3,7 @@ using OnlineStore.Core.Domain.Categories;
 using OnlineStore.Core.Domain.Products;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,6 +54,17 @@ namespace OnlineStore.Infrastructure.DAL.EF.Products
             }
 
         };
+
+        public void Add(Product product)
+        {
+            _products.Add(product);
+        }
+
+        public Product Find(int productId)
+        {
+            return _products.Single(p => p.ProductId == productId);
+        }
+
         public List<Product> GetProducts(string category, int pageSize = 4, int pageNumber = 1)
         {
             return _products;

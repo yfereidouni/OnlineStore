@@ -10,29 +10,25 @@ namespace OnlineStore.EndPoints.UI.MVC.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductRepository ProductRepository;
+        private readonly IProductRepository productRepository;
 
         public ProductController(IProductRepository productRepository)
         {
-            ProductRepository = productRepository;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
+            this.productRepository = productRepository;
         }
         public IActionResult List(string category, int pageNumber = 1)
         {
             var model = new ProductListViewModel
             {
-                Products = ProductRepository.GetProducts(category, 3, pageNumber),
+                Products = productRepository.GetProducts(category, 2, pageNumber),
                 PagingInfo = new Models.Common.PagingInfo
                 {
                     CurrentPage = pageNumber,
-                    ItemsPerPage = 3,
-                    TotalItems = ProductRepository.TotalCount(category)
+                    ItemsPerPage = 2,
+                    TotalItems = productRepository.TotalCount(category)
                 },
                 CurrentCategory = category
+
             };
             return View(model);
         }

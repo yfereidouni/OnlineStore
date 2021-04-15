@@ -60,7 +60,7 @@
                           asp-controller="Cart" method="post">
                         <input type="hidden" name="productId" value="@item.ProductId" />
                         <input type="hidden" name="returnUrl"
-                               value="" />
+                               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                         <button type="submit"
                                 class="btn btn-success btn-sm pull-right" style="float:right">
                             Add To Cart
@@ -71,8 +71,9 @@
             </div>
         </div>
     }
-</div>
 
+
+</div>
 <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-secondary"
      page-class-selected="btn-primary"
@@ -80,9 +81,9 @@
 </div>
 
 @*<div class="btn-group pull-right m-1">
-    @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
-    {
-        var className = i == Model.PagingInfo.CurrentPage ? "btn-primary" : "btn-secondary";
-        <a class="btn @className" asp-action="List" asp-route-pageNumber="@i">@i</a>
-    }
-</div>*@
+        @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+        {
+            var className = i == Model.PagingInfo.CurrentPage ? "btn-primary" : "btn-secondary";
+            <a class="btn @className" asp-action="List" asp-route-pageNumber="@i">@i</a>
+        }
+    </div>*@

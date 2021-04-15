@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineStore.EndPoints.UI.MVC.Models.Carts;
 using OnlineStore.Core.Contracts.Categories;
 using OnlineStore.Core.Contracts.Products;
 using OnlineStore.Infrastructure.DAL.EF.Categories;
@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace OnlineStore.EndPoints.UI.MVC
 {
@@ -29,17 +30,19 @@ namespace OnlineStore.EndPoints.UI.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
+            services.AddMvc();
             services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore")));
-
+            services.AddMemoryCache();
+            services.AddSession();
+            //services.AddControllersWithViews();
             //services.AddScoped<IProductRepository, FakeProductRepository>();
             services.AddScoped<IProductRepository, EFProductRepository>();
             services.AddScoped<ICategoryRepository, EFCategoryRepository>();
-
-            services.AddMvc();
+            services.AddScoped(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers(options => options.EnableEndpointRouting = false);
-
+            //services.AddScoped<IOrderRepository, EFOrderRepository>();
+            //services.AddScoped<IPaymentService, PayIrPaymentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +61,9 @@ namespace OnlineStore.EndPoints.UI.MVC
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
+            app.UseSession();
+            
             app.UseRouting();
 
             app.UseAuthorization();
