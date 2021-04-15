@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineStore.Core.Contracts.Categories;
 using OnlineStore.Core.Contracts.Products;
+using OnlineStore.Infrastructure.DAL.EF.Categories;
 using OnlineStore.Infrastructure.DAL.EF.Common;
 using OnlineStore.Infrastructure.DAL.EF.Products;
 using System;
@@ -33,6 +35,8 @@ namespace OnlineStore.EndPoints.UI.MVC
 
             //services.AddScoped<IProductRepository, FakeProductRepository>();
             services.AddScoped<IProductRepository, EFProductRepository>();
+            services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+
             services.AddMvc();
             services.AddControllers(options => options.EnableEndpointRouting = false);
 
@@ -76,7 +80,7 @@ namespace OnlineStore.EndPoints.UI.MVC
 
                 routes.MapRoute(
                 name: null,
-                template: "Page-{pageNumber:int}",
+                template: "Page{pageNumber:int}",
                 defaults: new
                 {
                     controller = "Product",

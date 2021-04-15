@@ -11,6 +11,6 @@ namespace OnlineStore.EndPoints.UI.MVC.Models.Products
     {
         public List<Product> Products { get; set; }
         public PagingInfo PagingInfo { get; set; }
-        //public string CurrentCategory { get; set; }
+        public string CurrentCategory { get; set; }
     }
 }

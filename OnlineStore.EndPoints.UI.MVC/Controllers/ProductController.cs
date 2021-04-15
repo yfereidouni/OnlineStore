@@ -21,17 +21,18 @@ namespace OnlineStore.EndPoints.UI.MVC.Controllers
         {
             return View();
         }
-        public IActionResult List(int pageNumber = 1)
+        public IActionResult List(string category, int pageNumber = 1)
         {
             var model = new ProductListViewModel
             {
-                Products = ProductRepository.GetProducts(3, pageNumber),
+                Products = ProductRepository.GetProducts(category, 3, pageNumber),
                 PagingInfo = new Models.Common.PagingInfo
                 {
                     CurrentPage = pageNumber,
                     ItemsPerPage = 3,
-                    TotalItems = ProductRepository.TotalCount()
-                }
+                    TotalItems = ProductRepository.TotalCount(category)
+                },
+                CurrentCategory = category
             };
             return View(model);
         }

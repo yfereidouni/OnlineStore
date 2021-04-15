@@ -14,14 +14,17 @@ namespace OnlineStore.Infrastructure.DAL.EF.Products
         {
             _onlineStoreContext = onlineStoreContext;
         }
-        public List<Product> GetProducts(int pageSize = 4, int pageNumber = 1)
+        public List<Product> GetProducts(string category, int pageSize = 4, int pageNumber = 1)
         {
-            return _onlineStoreContext.Products.Include(c => c.Category).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            //return _onlineStoreContext.Products.Include(c => c.Category).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            return _onlineStoreContext.Products.Where(c => string.IsNullOrWhiteSpace(category) || c.Category.CategoryName == category).Include(c => c.Category).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
         }
 
-        public int TotalCount()
+        public int TotalCount(string category)
         {
-            return _onlineStoreContext.Products.Count();
+            //return _onlineStoreContext.Products.Count(c => string.IsNullOrWhiteSpace(category) || c.Category.CategoryName == category);
+            return _onlineStoreContext.Products.Count(c => string.IsNullOrWhiteSpace(category) || c.Category.CategoryName == category);
         }
     }
 }
