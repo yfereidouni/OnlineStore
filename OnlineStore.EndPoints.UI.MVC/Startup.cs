@@ -33,6 +33,8 @@ namespace OnlineStore.EndPoints.UI.MVC
 
             //services.AddScoped<IProductRepository, FakeProductRepository>();
             services.AddScoped<IProductRepository, EFProductRepository>();
+            services.AddMvc();
+            services.AddControllers(options => options.EnableEndpointRouting = false);
 
         }
 
@@ -57,11 +59,51 @@ namespace OnlineStore.EndPoints.UI.MVC
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=product}/{action=list}/{id?}");
+            //});
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=product}/{action=list}/{id?}");
+                routes.MapRoute(
+                name: null,
+                template: "{category}/Page{pageNumber:int}",
+                defaults: new { controller = "Product", action = "List" }
+                );
+
+                routes.MapRoute(
+                name: null,
+                template: "Page-{pageNumber:int}",
+                defaults: new
+                {
+                    controller = "Product",
+                    action = "List",
+                    productPage = 1
+                }
+                );
+                routes.MapRoute(
+                name: null,
+                template: "{category}",
+                defaults: new
+                {
+                    controller = "Product",
+                    action = "List",
+                    productPage = 1
+                }
+                );
+                routes.MapRoute(
+                name: null,
+                template: "",
+                defaults: new
+                {
+                    controller = "Product",
+                    action = "List",
+                    productPage = 1
+                });
+                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
         }
     }

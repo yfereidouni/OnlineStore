@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineStore.Core.Contracts.Products;
+using OnlineStore.EndPoints.UI.MVC.Models.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,19 @@ namespace OnlineStore.EndPoints.UI.MVC.Controllers
         {
             return View();
         }
-        public IActionResult List()
+        public IActionResult List(int pageNumber = 1)
         {
-            var products = ProductRepository.GetProducts();
-            return View(products);
+            var model = new ProductListViewModel
+            {
+                Products = ProductRepository.GetProducts(3, pageNumber),
+                PagingInfo = new Models.Common.PagingInfo
+                {
+                    CurrentPage = pageNumber,
+                    ItemsPerPage = 3,
+                    TotalItems = ProductRepository.TotalCount()
+                }
+            };
+            return View(model);
         }
     }
 }

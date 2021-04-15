@@ -9,17 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Services", "02. Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Infrastructure", "03. Infrastructure", "{40D5DC66-FD95-42F6-B2BB-5B37E9134505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Core.Domain", "OnlineStore.Core.Domain\OnlineStore.Core.Domain.csproj", "{6B55F501-7695-4A10-9005-32C08118C034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Core.Domain", "OnlineStore.Core.Domain\OnlineStore.Core.Domain.csproj", "{6B55F501-7695-4A10-9005-32C08118C034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Core.Contracts", "OnlineStore.Core.Contracts\OnlineStore.Core.Contracts.csproj", "{5F53C1C6-AF73-4C1F-B80C-F4332F9DA9EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Core.Contracts", "OnlineStore.Core.Contracts\OnlineStore.Core.Contracts.csproj", "{5F53C1C6-AF73-4C1F-B80C-F4332F9DA9EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Services.ApplicationServices", "OnlineStore.Services.ApplicationServices\OnlineStore.Services.ApplicationServices.csproj", "{FC5E61D1-35BD-4165-B8C8-136F1AC764FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Services.ApplicationServices", "OnlineStore.Services.ApplicationServices\OnlineStore.Services.ApplicationServices.csproj", "{FC5E61D1-35BD-4165-B8C8-136F1AC764FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Infrastructure.DAL.EF", "OnlineStore.Infrastructure.DAL.EF\OnlineStore.Infrastructure.DAL.EF.csproj", "{DD8E20D9-07A9-4558-B848-BAE30D904CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Infrastructure.DAL.EF", "OnlineStore.Infrastructure.DAL.EF\OnlineStore.Infrastructure.DAL.EF.csproj", "{DD8E20D9-07A9-4558-B848-BAE30D904CE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EndPoints", "EndPoints", "{B7528840-293F-48BD-B694-7158DF263C56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.EndPoints.UI.MVC", "OnlineStore.EndPoints.UI.MVC\OnlineStore.EndPoints.UI.MVC.csproj", "{0A1C69B4-1E54-405C-9EEF-FC9965A1607E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.EndPoints.UI.MVC", "OnlineStore.EndPoints.UI.MVC\OnlineStore.EndPoints.UI.MVC.csproj", "{0A1C69B4-1E54-405C-9EEF-FC9965A1607E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

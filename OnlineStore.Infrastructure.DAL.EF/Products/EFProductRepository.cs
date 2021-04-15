@@ -14,9 +14,14 @@ namespace OnlineStore.Infrastructure.DAL.EF.Products
         {
             _onlineStoreContext = onlineStoreContext;
         }
-        public List<Product> GetProducts()
+        public List<Product> GetProducts(int pageSize = 4, int pageNumber = 1)
         {
-            return _onlineStoreContext.Products.Include(c => c.Category).ToList();
+            return _onlineStoreContext.Products.Include(c => c.Category).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+        }
+
+        public int TotalCount()
+        {
+            return _onlineStoreContext.Products.Count();
         }
     }
 }

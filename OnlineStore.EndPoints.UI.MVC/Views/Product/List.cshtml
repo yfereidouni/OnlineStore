@@ -1,23 +1,35 @@
-﻿@model List<Product>
+﻿@model ProductListViewModel
 @{
     ViewData["Title"] = "List";
 }
 
 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
+        <div class="carousel-item">
+            <img class="d-block img-fluid" src="~/img/STORM_Watchshop_Omie_900x350_opt.jpg" alt="slide 01">
+        </div>
         <div class="carousel-item active">
-            <img class="d-block img-fluid" src="~/img/900x350.png" alt="First slide">
+            <img class="d-block img-fluid" src="~/img/11d4871cb2d06cf020282f05ac1b4027.png" alt="slide 02">
         </div>
         <div class="carousel-item">
-            <img class="d-block img-fluid" src="~/img/900x350.png" alt="Second slide">
+            <img class="d-block img-fluid" src="~/img/AdobeStock_62581309-1-900x350.jpeg" alt="slide 03">
         </div>
         <div class="carousel-item">
-            <img class="d-block img-fluid" src="~/img/900x350.png" alt="Third slide">
+            <img class="d-block img-fluid" src="~/img/alpaca_slipper_banner.jpg" alt="slide 04">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block img-fluid" src="~/img/shopkeeper.jpg" alt="slide 05">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block img-fluid" src="~/img//ZPmIilgIFxmT-qsba7y4WZAQA.jpg" alt="slide 06">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -31,7 +43,7 @@
 </div>
 
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Products)
     {
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -61,8 +73,17 @@
     }
 </div>
 
-<div page-model="@Model" page-action="List" page-classes-enabled="true"
+<div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-secondary"
      page-class-selected="btn-primary"
      class="btn-group pull-right m-1">
 </div>
+
+@*<div class="btn-group pull-right m-1">
+    @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+    {
+        var className = i == Model.PagingInfo.CurrentPage ? "btn-primary" : "btn-secondary";
+        <a class="btn @className" asp-action="List" asp-route-pageNumber="@i">@i</a>
+
+    }
+</div>*@

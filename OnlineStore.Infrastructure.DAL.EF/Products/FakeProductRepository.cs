@@ -53,9 +53,14 @@ namespace OnlineStore.Infrastructure.DAL.EF.Products
             }
 
         };
-        public List<Product> GetProducts()
+        public List<Product> GetProducts(int pageSize = 4, int pageNumber = 1)
         {
             return _products;
+        }
+
+        public int TotalCount()
+        {
+            return _products.Count;
         }
     }
 }
