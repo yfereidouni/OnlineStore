@@ -1,4 +1,4 @@
-﻿@model Cart
+﻿@model OnlineStore.Core.Domain.Carts.Cart
 
 @if (Model.Lines.Count() > 0)
 {
@@ -8,8 +8,8 @@
         @Model.ComputeTotalValue().ToString("c")
     </small>
 }
-<a class="btn btn-sm btn-secondary navbar-btn"
+<a class="btn btn-sm btn-secondary navbar-btn nav-item"
    asp-controller="Cart" asp-action="Index"
    asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-    <i class="fa fa-shopping-cart"></i>
+    <i class="fa fa-shopping-cart nav-link"></i>
 </a>

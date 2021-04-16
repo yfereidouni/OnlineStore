@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineStore.Core.Domain.Categories;
+using OnlineStore.Core.Domain.Orders;
 using OnlineStore.Core.Domain.Products;
 using OnlineStore.Infrastructure.DAL.EF.Categories;
 using OnlineStore.Infrastructure.DAL.EF.Products;
@@ -16,6 +17,7 @@ namespace OnlineStore.Infrastructure.DAL.EF.Common
         public OnlineStoreContext(DbContextOptions<OnlineStoreContext> options) : base(options) { }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

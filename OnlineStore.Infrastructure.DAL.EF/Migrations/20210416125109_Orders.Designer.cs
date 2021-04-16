@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineStore.Infrastructure.DAL.EF.Common;
 
 namespace OnlineStore.Infrastructure.DAL.EF.Migrations
 {
     [DbContext(typeof(OnlineStoreContext))]
-    partial class OnlineStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210416125109_Orders")]
+    partial class Orders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

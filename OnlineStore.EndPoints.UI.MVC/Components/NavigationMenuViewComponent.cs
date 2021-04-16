@@ -2,7 +2,7 @@
 using OnlineStore.Core.Contracts.Categories;
 using OnlineStore.EndPoints.UI.MVC.Categories;
 
-namespace OnlineStore.Infrastructure.DAL.EF.Components
+namespace OnlineStore.EndPoints.UI.MVC.Components
 {
     public class NavigationMenuViewComponent : ViewComponent
     {

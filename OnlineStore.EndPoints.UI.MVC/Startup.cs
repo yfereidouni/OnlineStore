@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using OnlineStore.Infrastructure.Orders;
+using OnlineStore.Core.Contracts.Orders;
 
 namespace OnlineStore.EndPoints.UI.MVC
 {
@@ -41,7 +43,7 @@ namespace OnlineStore.EndPoints.UI.MVC
             services.AddScoped(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers(options => options.EnableEndpointRouting = false);
-            //services.AddScoped<IOrderRepository, EFOrderRepository>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
             //services.AddScoped<IPaymentService, PayIrPaymentService>();
         }
 

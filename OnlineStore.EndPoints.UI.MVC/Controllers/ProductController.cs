@@ -20,11 +20,11 @@ namespace OnlineStore.EndPoints.UI.MVC.Controllers
         {
             var model = new ProductListViewModel
             {
-                Products = productRepository.GetProducts(category, 2, pageNumber),
+                Products = productRepository.GetProducts(category, 3, pageNumber),
                 PagingInfo = new Models.Common.PagingInfo
                 {
                     CurrentPage = pageNumber,
-                    ItemsPerPage = 2,
+                    ItemsPerPage = 3,
                     TotalItems = productRepository.TotalCount(category)
                 },
                 CurrentCategory = category

@@ -14,8 +14,8 @@ namespace OnlineStore.EndPoints.UI.MVC.Controllers
 {
     public class CartController : Controller
     {
-        private IProductRepository repository;
-        private Cart _cart;
+        private readonly IProductRepository repository;
+        private readonly Cart _cart;
 
         public CartController(IProductRepository repo, Cart cart)
         {
