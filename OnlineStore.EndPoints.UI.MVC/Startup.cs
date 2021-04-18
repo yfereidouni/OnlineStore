@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using OnlineStore.Infrastructure.Orders;
 using OnlineStore.Core.Contracts.Orders;
+using OnlineStore.Core.Contracts.Payments;
+using OnlineStore.Services.ApplicatoinServices.Payments;
 
 namespace OnlineStore.EndPoints.UI.MVC
 {
@@ -44,7 +46,7 @@ namespace OnlineStore.EndPoints.UI.MVC
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddScoped<IOrderRepository, EFOrderRepository>();
-            //services.AddScoped<IPaymentService, PayIrPaymentService>();
+            services.AddScoped<IPaymentService, PayIrPaymentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
