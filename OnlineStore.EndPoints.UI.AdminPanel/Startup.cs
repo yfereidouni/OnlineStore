@@ -1,9 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineStore.Core.Contracts.Categories;
+using OnlineStore.Core.Contracts.Orders;
+using OnlineStore.Core.Contracts.Products;
+using OnlineStore.EndPoints.UI.AdminPanel.Models.Accounts;
+using OnlineStore.Infrastructure.DAL.EF.Categories;
+using OnlineStore.Infrastructure.DAL.EF.Common;
+using OnlineStore.Infrastructure.DAL.EF.Products;
+using OnlineStore.Infrastructure.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +35,20 @@ namespace OnlineStore.EndPoints.UI.AdminPanel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore")));
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddScoped<IProductRepository, EFProductRepository>();
+            services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IOrderRepository, EFOrderRepository>();
+
+
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStoreUsers")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppIdentityDbContext>()
+            .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +68,8 @@ namespace OnlineStore.EndPoints.UI.AdminPanel
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -1,0 +1,23 @@
+﻿@model List<OnlineStore.Core.Domain.Products.Product>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            @*<th>Image</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@item.ProductId</td>
+                <td class="text-left">@item.Name</td>
+                <td class="text-left">@item.Description</td>
+                @*<td class="text-right">@item.Image</td>*@
+            </tr>
+        }
+    </tbody>
+</table>
