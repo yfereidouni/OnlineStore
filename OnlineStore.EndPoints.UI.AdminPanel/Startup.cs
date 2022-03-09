@@ -36,7 +36,7 @@ namespace OnlineStore.EndPoints.UI.AdminPanel
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore")));
+            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore_DB")));
             services.AddMemoryCache();
             services.AddSession();
             services.AddScoped<IProductRepository, EFProductRepository>();
@@ -45,7 +45,7 @@ namespace OnlineStore.EndPoints.UI.AdminPanel
             services.AddScoped<IOrderRepository, EFOrderRepository>();
 
 
-            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStoreUsers")));
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore_AAA")));
             services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();

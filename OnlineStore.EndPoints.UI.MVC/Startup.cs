@@ -35,7 +35,7 @@ namespace OnlineStore.EndPoints.UI.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore")));
+            services.AddDbContext<OnlineStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnlineStore_DB")));
             services.AddMemoryCache();
             services.AddSession();
             //services.AddControllersWithViews();
